@@ -2,7 +2,7 @@
 
 Personal portfolio website built with vanilla HTML, CSS, and JavaScript.
 
-🔗 **Live site:** (add your Vercel link here after deploying)
+🔗 **Live site:** [(add your Vercel link here after deploying)](https://portfolio-nine-ashen-50.vercel.app/)
 
 ## About
 
