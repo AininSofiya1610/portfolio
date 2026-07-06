@@ -1,4 +1,4 @@
-# Nur Ainin Sofiya Binti Zainudin — Portfolio
+# Nur Ainin Sofiya Binti Zainudin
 
 Personal portfolio website built with vanilla HTML, CSS, and JavaScript.
 
