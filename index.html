@@ -670,9 +670,9 @@
 <!-- STATS -->
 <div class="stats-row">
   <div class="stat reveal">
-    <div class="stat-num" data-suffix="<" data-target="1">0</div>
-    <div class="stat-label">Years experience</div>
-  </div>
+  <div class="stat-num" data-prefix="<" data-target="1">0</div>
+  <div class="stat-label">Years experience</div>
+</div>
   <div class="stat reveal d1">
     <div class="stat-num" data-target="10" data-suffix="+">0</div>
     <div class="stat-label">Projects built</div>
@@ -1206,19 +1206,19 @@
   document.querySelectorAll('.skill-card').forEach(c=>bobs.observe(c));
 
   // ── Counters ──
-  function counter(el,target,suffix){
-    const dur=1600;const start=performance.now();
-    (function step(t){
-      const p=Math.min((t-start)/dur,1);
-      const e=1-Math.pow(1-p,4);
-      el.textContent=Math.round(e*target)+suffix;
-      if(p<1)requestAnimationFrame(step);
-    })(performance.now());
-  }
+  function counter(el,target,suffix,prefix){
+  const dur=1600;const start=performance.now();
+  (function step(t){
+    const p=Math.min((t-start)/dur,1);
+    const e=1-Math.pow(1-p,4);
+    el.textContent=prefix+Math.round(e*target)+suffix;
+    if(p<1)requestAnimationFrame(step);
+  })(performance.now());
+}
   const cobs=new IntersectionObserver(entries=>{
     entries.forEach(e=>{
       if(e.isIntersecting){
-        counter(e.target,+e.target.dataset.target,e.target.dataset.suffix||'');
+        counter(e.target,+e.target.dataset.target,e.target.dataset.suffix||'',e.target.dataset.prefix||'');
         cobs.unobserve(e.target);
       }
     });
