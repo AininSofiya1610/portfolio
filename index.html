@@ -953,7 +953,7 @@
   <div class="about-grid">
     <div class="about-card reveal" id="about">
       <h3>About Me</h3>
-      <p>Hi! I'm <strong>Nur Ainin Sofiya Binti Zainudin</strong>, a BSc (Hons) Information Technology graduate. I previously worked as Graduate System Support at OH Digital Solution, where I tested and verified a live occupational health platform, handled client issues, coordinated procurement documentation, and wrote user manuals and training materials. I enjoy the problem-solving side of technology tracking down bugs, making sure systems work correctly, and explaining things clearly to others. I am now looking for roles in system testing/QA, data analysis, documentation & stakeholder coordination, IT support, or tutoring.</p>
+      <p>Hi! I'm <strong>Nur Ainin Sofiya Binti Zainudin</strong>, a BSc (Hons) Information Technology graduate. I previously worked as Graduate System Support at OH Digital Solution, where I tested and verified a live occupational health platform, handled client issues, coordinated procurement documentation, and wrote user manuals and training materials. I enjoy the problem-solving side of tech — tracking down bugs, making sure systems work correctly, and explaining things clearly to others. I'm now looking for roles in system testing/QA, data analysis, documentation & stakeholder coordination, IT support, or tutoring.</p>
     </div>
     <div class="about-card reveal d1">
       <h3>Currently</h3>
@@ -1090,7 +1090,14 @@
   <div class="cert-grid" id="cert-grid"></div>
 </section>
 
-
+<!-- ACTIVITIES -->
+<section id="activities" class="section" style="padding-top:0">
+  <div class="section-header">
+    <p class="section-label reveal">// activities</p>
+    <h2 class="section-title reveal">Programs & <span class="grad">Volunteering</span></h2>
+  </div>
+  <div class="act-list" id="act-list"></div>
+</section>
 
 <!-- LANGUAGES -->
 <section id="languages" class="section" style="padding-top:0">
@@ -1244,7 +1251,12 @@
     // add more here...
   ];
 
- 
+  // kind: 'Volunteering' or 'Program'
+  const activities = [
+    { title:'Sample Volunteering Activity', kind:'Volunteering', org:'Organisation Name', date:'2025', desc:'Describe your role and what you did or learned.', tags:['Teamwork','Communication'] },
+    { title:'Sample Program', kind:'Program', org:'Organisation Name', date:'2024', desc:'Describe the program and your contribution.', tags:['Leadership'] },
+    // add more here...
+  ];
 
   (function renderExtras(){
     const grid = document.getElementById('cert-grid');
@@ -1403,7 +1415,7 @@
     {ic:'💻',lbl:'View Skills',sub:'See tech stack',fn:()=>document.querySelector('#skills').scrollIntoView({behavior:'smooth'})},
     {ic:'📁',lbl:'View Projects',sub:'See my work',fn:()=>document.querySelector('#projects').scrollIntoView({behavior:'smooth'})},
     {ic:'🏅',lbl:'View Certificates',sub:'Certificates & achievements',fn:()=>document.querySelector('#certificates').scrollIntoView({behavior:'smooth'})},
-   
+    {ic:'🤝',lbl:'Programs & Volunteering',sub:'Activities',fn:()=>document.querySelector('#activities').scrollIntoView({behavior:'smooth'})},
     {ic:'📋',lbl:'Now & About',sub:'What I\'m up to',fn:()=>document.querySelector('#now').scrollIntoView({behavior:'smooth'})},
     {ic:'✉',lbl:'Contact Me',sub:'Get in touch',fn:()=>document.querySelector('#contact').scrollIntoView({behavior:'smooth'})},
     {ic:'◐',lbl:'Toggle Theme',sub:'Switch dark/light',fn:()=>tb.click()},
