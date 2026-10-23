@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nur Ainin Sofiya Binti Zainudin — Software Developer | IT Support | QA Testing</title>
+<title>Nur Ainin Sofiya Binti Zainudin — BSc (Hons) IT | System Testing, QA & Data Analyst | IT Support | Tutor</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🟢</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -101,8 +101,8 @@
     background-clip:text;
   }
   .nav-links {
-    display:flex; gap:2rem; list-style:none;
-    font-size:0.9rem; font-weight:400;
+    display:flex; gap:1.5rem; list-style:none;
+    font-size:0.88rem; font-weight:400;
   }
   .nav-links a {
     color:var(--text-dim); text-decoration:none;
@@ -457,13 +457,16 @@
   .reveal.on { opacity:1; transform:translateY(0); }
   .d1{transition-delay:0.1s} .d2{transition-delay:0.2s} .d3{transition-delay:0.3s}
 
+  @media(max-width:1100px){
+    .nav-links{gap:1rem; font-size:0.8rem}
+  }
   @media(max-width:900px){
     #hero{grid-template-columns:1fr}
     .hero-right{display:none}
     .about-grid{grid-template-columns:1fr}
+    .nav-links{display:none}
   }
   @media(max-width:600px){
-    .nav-links{display:none}
     .stats-row{gap:0.5rem}
     #contact .contact-box{padding:2rem}
   }
@@ -586,6 +589,76 @@
     color:#34d399; font-size:0.74rem; font-family:var(--mono);
     padding:0.2rem 0.6rem; border-radius:100px;
   }
+
+  /* ── Certificates & Activities ── */
+  .cert-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1.25rem; }
+  .cert-card {
+    background:var(--card-bg); border:1px solid var(--border);
+    border-radius:var(--radius); overflow:hidden; cursor:pointer;
+    backdrop-filter:blur(16px);
+    transition:transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+    display:flex; flex-direction:column;
+  }
+  .cert-card:hover { transform:translateY(-5px); border-color:rgba(139,92,246,0.4); box-shadow:0 16px 40px rgba(139,92,246,0.12); }
+  .cert-thumb {
+    height:150px; display:grid; place-items:center; font-size:2.6rem;
+    background:linear-gradient(135deg,rgba(139,92,246,0.18),rgba(6,182,212,0.18));
+    overflow:hidden;
+  }
+  .cert-thumb img { width:100%; height:100%; object-fit:cover; }
+  .cert-body { padding:1.2rem 1.4rem 1.4rem; }
+  .cert-title { font-weight:700; font-size:1rem; margin-bottom:0.25rem; }
+  .cert-issuer { color:var(--accent-purple); font-size:0.85rem; font-weight:500; margin-bottom:0.5rem; }
+  .cert-meta { display:flex; justify-content:space-between; align-items:center; gap:0.5rem; }
+  .cert-date { font-family:var(--mono); font-size:0.72rem; color:var(--text-dimmer); }
+  .cert-view { font-size:0.78rem; color:var(--text-dim); }
+  .cert-card:hover .cert-view { color:var(--accent-purple); }
+
+  .act-list { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:1.25rem; }
+  .act-card {
+    background:var(--card-bg); border:1px solid var(--border);
+    border-radius:var(--radius); padding:1.6rem; backdrop-filter:blur(16px);
+    transition:transform 0.3s, border-color 0.3s;
+  }
+  .act-card:hover { transform:translateY(-4px); border-color:rgba(139,92,246,0.3); }
+  .act-top { display:flex; justify-content:space-between; align-items:flex-start; gap:0.75rem; flex-wrap:wrap; margin-bottom:0.5rem; }
+  .act-title { font-weight:700; font-size:1.02rem; }
+  .act-date {
+    font-family:var(--mono); font-size:0.72rem; color:var(--text-dimmer);
+    background:rgba(139,92,246,0.08); border:1px solid rgba(139,92,246,0.2);
+    padding:0.2rem 0.6rem; border-radius:100px; white-space:nowrap;
+  }
+  .act-org { color:var(--accent-purple); font-size:0.86rem; font-weight:500; margin-bottom:0.6rem; }
+  .act-desc { color:var(--text-dim); font-size:0.86rem; font-weight:300; line-height:1.7; margin-bottom:0.9rem; }
+
+  #cert-modal {
+    position:fixed; inset:0; z-index:1100;
+    background:rgba(0,0,0,0.75); backdrop-filter:blur(8px);
+    display:flex; align-items:center; justify-content:center; padding:1.5rem;
+    opacity:0; pointer-events:none; transition:opacity 0.2s;
+  }
+  #cert-modal.open { opacity:1; pointer-events:all; }
+  .cert-modal-box {
+    width:100%; max-width:960px; height:min(88vh,800px);
+    background:#0d0d1a; border:1px solid rgba(255,255,255,0.12);
+    border-radius:16px; overflow:hidden; display:flex; flex-direction:column;
+  }
+  .cert-modal-head {
+    display:flex; align-items:center; justify-content:space-between; gap:1rem;
+    padding:0.85rem 1.2rem; border-bottom:1px solid rgba(255,255,255,0.08); color:#e2e2f0;
+  }
+  .cert-modal-title { font-weight:600; font-size:0.95rem; }
+  .cert-modal-actions { display:flex; gap:0.5rem; align-items:center; }
+  .cert-modal-actions a, .cert-modal-actions button {
+    background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12);
+    color:#e2e2f0; padding:0.35rem 0.8rem; border-radius:8px;
+    font-size:0.8rem; text-decoration:none; cursor:pointer; font-family:var(--font);
+  }
+  .cert-modal-actions a:hover, .cert-modal-actions button:hover { border-color:var(--accent-purple); }
+  .cert-modal-content { flex:1; background:#fff; overflow:auto; display:grid; place-items:center; }
+  .cert-modal-content iframe { width:100%; height:100%; border:0; }
+  .cert-modal-content img { max-width:100%; max-height:100%; object-fit:contain; }
+  .empty-note { color:var(--text-dimmer); font-size:0.88rem; font-family:var(--mono); }
 </style>
 </head>
 <body>
@@ -610,6 +683,8 @@
     <li><a href="#projects">Projects</a></li>
     <li><a href="#experience">Experience</a></li>
     <li><a href="#education">Education</a></li>
+    <li><a href="#certificates">Certificates</a></li>
+    <li><a href="#activities">Activities</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
   <div class="nav-right">
@@ -623,18 +698,18 @@
 <section id="hero">
   <div class="hero-left" id="hero-left" style="opacity:0;transform:translateY(16px);">
     <div class="hero-badges">
-      <span class="badge">💻 Software Development</span>
-      <span class="badge">🐞 QA & Testing</span>
-      <span class="badge open"><span class="badge-dot"></span> Open to on-site opportunities</span>
+      <span class="badge">🎓 BSc (Hons) Information Technology</span>
+      <span class="badge">🐞 System Testing & QA</span>
+      <span class="badge">📊 Data Analyst</span>
+      <span class="badge open"><span class="badge-dot"></span> Open to work</span>
     </div>
     <p class="greeting" id="greeting">Good morning,</p>
     <h1 class="hero-name">I'm Ainin Sofiya</h1>
     <div class="hero-role">
-      <span id="role-text" style="visibility:hidden">Software Developer</span><span class="type-cursor"></span>
+      <span id="role-text" style="visibility:hidden">System Testing & QA</span><span class="type-cursor"></span>
     </div>
     <p class="hero-bio">
-      Information Technology graduate with practical experience in web development using PHP (Laravel), Next.js/TypeScript, MySQL, and HTML, CSS, and JavaScript gained through university, internship, and personal projects. In my current role as a Graduate System Support, I work closely with the mySMARTOH occupational health system, testing new features, verifying system configurations, identifying and documenting issues, and assisting clients with system-related enquiries. I enjoy understanding how systems work, solving problems, and improving the overall user experience. Looking for an on-site opportunity in software development, IT support, or software testing/QA where I can continue building my technical skills while contributing to real-world projects.
-
+      <strong>BSc (Hons) Information Technology</strong> graduate with hands-on experience in <strong>system testing & QA</strong>, <strong>documentation & stakeholder coordination</strong>, and <strong>IT support & systems</strong>. I have tested and verified features and configurations on the mySMARTOH occupational health system, documented issues, supported clients, prepared user manuals and training materials, and coordinated procurement documentation. I also build web projects using PHP (Laravel), Next.js/TypeScript, MySQL, and JavaScript. Currently seeking roles as a <strong>System Tester / QA, Data Analyst, IT Support, Documentation & Coordination officer, or Tutor</strong>.
     </p>
     <div class="hero-btns">
       <a href="#projects" class="btn-primary">View Projects</a>
@@ -653,11 +728,11 @@
       <div class="code-body">
         <div><span class="c-keyword">const</span> <span class="c-var">sofiya</span> <span style="color:rgba(255,255,255,0.5)">=</span> <span style="color:rgba(255,255,255,0.5)">{</span></div>
         <div>&nbsp;&nbsp;<span class="c-key">name</span><span style="color:rgba(255,255,255,0.4)">:</span> <span class="c-str">"Nur Ainin Sofiya Binti Zainudin"</span><span style="color:rgba(255,255,255,0.4)">,</span></div>
-        <div>&nbsp;&nbsp;<span class="c-key">role</span><span style="color:rgba(255,255,255,0.4)">:</span> <span class="c-str" id="code-role">"Graduate System Support"</span><span style="color:rgba(255,255,255,0.4)">,</span></div>
-        <div>&nbsp;&nbsp;<span class="c-key">strengths</span><span style="color:rgba(255,255,255,0.4)">:</span> <span style="color:rgba(255,255,255,0.5)">[</span><span class="c-str">"Client Support"</span><span style="color:rgba(255,255,255,0.4)">,</span></div>
-        <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="c-str">"Procurement"</span><span style="color:rgba(255,255,255,0.4)">,</span> <span class="c-str">"Documentation"</span><span style="color:rgba(255,255,255,0.5)">],</span></div>
+        <div>&nbsp;&nbsp;<span class="c-key">role</span><span style="color:rgba(255,255,255,0.4)">:</span> <span class="c-str" id="code-role">"IT Graduate"</span><span style="color:rgba(255,255,255,0.4)">,</span></div>
+        <div>&nbsp;&nbsp;<span class="c-key">strengths</span><span style="color:rgba(255,255,255,0.4)">:</span> <span style="color:rgba(255,255,255,0.5)">[</span><span class="c-str">"QA & Testing"</span><span style="color:rgba(255,255,255,0.4)">,</span></div>
+        <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="c-str">"Documentation"</span><span style="color:rgba(255,255,255,0.4)">,</span> <span class="c-str">"IT Support"</span><span style="color:rgba(255,255,255,0.5)">],</span></div>
         <div>&nbsp;&nbsp;<span class="c-key">status</span><span style="color:rgba(255,255,255,0.4)">:</span> <span class="c-str">"Fresh Grad"</span><span style="color:rgba(255,255,255,0.4)">,</span></div>
-        <div>&nbsp;&nbsp;<span class="c-key">openToOnsiteRoles</span><span style="color:rgba(255,255,255,0.4)">:</span> <span class="c-bool">true</span></div>
+        <div>&nbsp;&nbsp;<span class="c-key">openToWork</span><span style="color:rgba(255,255,255,0.4)">:</span> <span class="c-bool">true</span></div>
         <div><span style="color:rgba(255,255,255,0.5)">};</span></div>
         <div>&nbsp;</div>
         <div><span class="c-comment">// Let's work together</span></div>
@@ -670,9 +745,9 @@
 <!-- STATS -->
 <div class="stats-row">
   <div class="stat reveal">
-  <div class="stat-num" data-prefix="<" data-target="1">0</div>
-  <div class="stat-label">Years experience</div>
-</div>
+    <div class="stat-num" data-prefix="<" data-target="1">0</div>
+    <div class="stat-label">Years experience</div>
+  </div>
   <div class="stat reveal d1">
     <div class="stat-num" data-target="10" data-suffix="+">0</div>
     <div class="stat-label">Projects built</div>
@@ -707,7 +782,7 @@
     <div class="skill-card reveal d1">
       <div class="skill-icon-wrap" style="background:linear-gradient(135deg,rgba(6,182,212,0.2),rgba(16,185,129,0.2))">🐞</div>
       <div class="skill-title">Software Testing & QA</div>
-      <div class="skill-sub">Day-to-day on the mySMARTOH platform</div>
+      <div class="skill-sub">Hands-on testing on the mySMARTOH platform</div>
       <div class="bars">
         <div class="bar-row"><span class="bar-lbl">Functional Test</span><div class="bar-track"><div class="bar-fill" style="--w:75%"></div></div></div>
         <div class="bar-row"><span class="bar-lbl">Bug Reporting</span><div class="bar-track"><div class="bar-fill" style="--w:78%"></div></div></div>
@@ -790,19 +865,19 @@
     </div>
 
     <div class="project-card reveal" data-repo="https://github.com/AininSofiya1610/scansnap">
-  <div class="proj-top">
-    <div class="proj-icon" style="background:linear-gradient(135deg,rgba(16,185,129,0.25),rgba(6,182,212,0.25))">📄</div>
-    <div class="proj-links">
-      <a href="https://aininsofiya1610.github.io/scansnap/" target="_blank" rel="noopener" class="proj-link" title="Live demo">↗</a>
-      <a href="https://github.com/AininSofiya1610/scansnap" target="_blank" rel="noopener" class="proj-link" style="font-family:var(--mono);font-size:0.68rem" title="View on GitHub">git</a>
+      <div class="proj-top">
+        <div class="proj-icon" style="background:linear-gradient(135deg,rgba(16,185,129,0.25),rgba(6,182,212,0.25))">📄</div>
+        <div class="proj-links">
+          <a href="https://aininsofiya1610.github.io/scansnap/" target="_blank" rel="noopener" class="proj-link" title="Live demo">↗</a>
+          <a href="https://github.com/AininSofiya1610/scansnap" target="_blank" rel="noopener" class="proj-link" style="font-family:var(--mono);font-size:0.68rem" title="View on GitHub">git</a>
+        </div>
+      </div>
+      <div class="proj-name">ScanSnap</div>
+      <div class="proj-desc">A browser-based document scanner — capture or upload photos and export them as a combined PDF.</div>
+      <div class="tags">
+        <span class="tag">JavaScript</span><span class="tag">PDF Export</span>
+      </div>
     </div>
-  </div>
-  <div class="proj-name">ScanSnap</div>
-  <div class="proj-desc">A browser-based document scanner — capture or upload photos and export them as a combined PDF.</div>
-  <div class="tags">
-    <span class="tag">JavaScript</span><span class="tag">PDF Export</span>
-  </div>
-</div>
 
     <div class="project-card reveal" data-repo="https://github.com/AininSofiya1610/vitapaw">
       <div class="proj-top">
@@ -878,17 +953,15 @@
   <div class="about-grid">
     <div class="about-card reveal" id="about">
       <h3>About Me</h3>
-      <p>Hi! I'm <strong>Nur Ainin Sofiya Binti Zainudin</strong> an IT graduate currently working as Graduate System Support, where my days involve a mix of testing and verifying platform behaviour, troubleshooting client-reported issues, coordinating procurement, and writing documentation. I like the problem-solving side of tech work, whether that's writing code, tracking down a bug, or figuring out why something broke. I am looking to bring that into an on-site role.</p>
+      <p>Hi! I'm <strong>Nur Ainin Sofiya Binti Zainudin</strong>, a BSc (Hons) Information Technology graduate. I previously worked as Graduate System Support at OH Digital Solution, where I tested and verified a live occupational health platform, handled client issues, coordinated procurement documentation, and wrote user manuals and training materials. I enjoy the problem-solving side of tech — tracking down bugs, making sure systems work correctly, and explaining things clearly to others. I'm now looking for roles in system testing/QA, data analysis, documentation & stakeholder coordination, IT support, or tutoring.</p>
     </div>
     <div class="about-card reveal d1">
       <h3>Currently</h3>
       <ul class="now-list">
-        <li>Testing & troubleshooting the mySMARTOH platform</li>
-        <li>Handling procurement documentation via NiagaWAN</li>
-        <li>Writing user manuals & training materials</li>
-        <li>Building side projects to sharpen dev skills</li>
-        <li>Polishing my testing/QA fundamentals</li>
-        <li>Actively looking for on-site roles in dev, support, or QA</li>
+        <li>Actively looking for roles in System Testing / QA, Data Analyst, IT Support & Systems, Documentation & Coordination, or Tutor</li>
+        <li>Sharpening my testing/QA fundamentals</li>
+        <li>Building side projects to improve my dev and data skills</li>
+        <li>Adding certificates and activities to this portfolio</li>
       </ul>
     </div>
   </div>
@@ -909,12 +982,11 @@
       <div class="exp-body">
         <div class="exp-top">
           <div class="exp-role">Graduate System Support</div>
-          <div class="exp-date">Present</div>
+          <div class="exp-date">2026 — Oct 2026</div>
         </div>
-        <div class="exp-company">OH Digital Solution Sdn Bhd · Remote </div>
-        <div class="exp-desc">Supporting the mySMARTOH occupational health platform by testing and verifying account configurations, report outputs, and exam-status logic for accuracy. Troubleshooting and reporting issues raised by clients, processing procurement documentation via NiagaWAN and writing user manuals and training materials.</div>
+        <div class="exp-company">OH Digital Solution Sdn Bhd · Remote</div>
+        <div class="exp-desc">Supported the mySMARTOH occupational health platform by testing and verifying account configurations, report outputs, and exam-status logic for accuracy. Troubleshot and reported issues raised by clients, processed procurement documentation via NiagaWAN, and wrote user manuals and training materials.</div>
         <div class="exp-tags">
-          <span class="tag hot">Current</span>
           <span class="tag">Testing/QA</span><span class="tag">Client Support</span><span class="tag">Procurement</span><span class="tag">Documentation</span>
         </div>
       </div>
@@ -1009,6 +1081,24 @@
   </div>
 </section>
 
+<!-- CERTIFICATES -->
+<section id="certificates" class="section" style="padding-top:0">
+  <div class="section-header">
+    <p class="section-label reveal">// certificates</p>
+    <h2 class="section-title reveal">Certificates & <span class="grad">Achievements</span></h2>
+  </div>
+  <div class="cert-grid" id="cert-grid"></div>
+</section>
+
+<!-- ACTIVITIES -->
+<section id="activities" class="section" style="padding-top:0">
+  <div class="section-header">
+    <p class="section-label reveal">// activities</p>
+    <h2 class="section-title reveal">Programs & <span class="grad">Volunteering</span></h2>
+  </div>
+  <div class="act-list" id="act-list"></div>
+</section>
+
 <!-- LANGUAGES -->
 <section id="languages" class="section" style="padding-top:0">
   <div class="section-header">
@@ -1055,7 +1145,7 @@
   <div class="contact-box reveal">
     <p class="section-label">// contact</p>
     <h2 class="section-title">Let's <span class="grad">Connect</span></h2>
-    <p>I'm currently open to on-site roles in software development, IT support, or software testing/QA. Whether you have a role, a project, or just want to say hi, reach out!</p>
+    <p>I'm currently open to roles in system testing & QA, data analysis, documentation & stakeholder coordination, IT support & systems, and tutoring. Whether you have a role, a project, or just want to say hi, reach out!</p>
     <div class="contact-links">
       <a href="mailto:aininsfyaa16@gmail.com" class="contact-chip">✉ aininsfyaa16@gmail.com</a>
       <a href="https://www.linkedin.com/in/nur-ainin-sofiya-zainudin" target="_blank" class="contact-chip">in LinkedIn</a>
@@ -1067,6 +1157,20 @@
 <footer>
   built with <span style="color:#ec4899">♥</span> by nur ainin sofiya · <span style="color:var(--accent-purple)">open to work</span> · <span style="color:var(--text-dimmer)">© 2026</span>
 </footer>
+
+<!-- CERTIFICATE VIEWER -->
+<div id="cert-modal">
+  <div class="cert-modal-box">
+    <div class="cert-modal-head">
+      <div class="cert-modal-title" id="cert-modal-title"></div>
+      <div class="cert-modal-actions">
+        <a id="cert-modal-open" href="#" target="_blank" rel="noopener">Open in new tab ↗</a>
+        <button id="cert-modal-close">✕ Close</button>
+      </div>
+    </div>
+    <div class="cert-modal-content" id="cert-modal-content"></div>
+  </div>
+</div>
 
 <!-- COMMAND HINT -->
 <div id="cmd-hint">Press <kbd>/</kbd> for commands</div>
@@ -1136,6 +1240,74 @@
   document.getElementById('greeting').textContent =
     h < 12 ? 'Good morning,' : h < 17 ? 'Good afternoon,' : 'Good evening,';
 
+  // ══════════════════════════════════════════════
+  //  CERTIFICATES & ACTIVITIES — EDIT HERE
+  // ══════════════════════════════════════════════
+  // Put your files in a "certificates/" folder next to index.html.
+  // type: 'pdf' or 'image'.  thumb (optional) = preview image for the card.
+  const certificates = [
+    { title:'Sample Certificate 1', issuer:'Issuer Name', date:'2026', file:'certificates/certificate-1.pdf', type:'pdf', icon:'🏅' },
+    { title:'Sample Certificate 2', issuer:'Issuer Name', date:'2025', file:'certificates/certificate-2.jpg', type:'image', thumb:'certificates/certificate-2.jpg', icon:'📜' },
+    // add more here...
+  ];
+
+  // kind: 'Volunteering' or 'Program'
+  const activities = [
+    { title:'Sample Volunteering Activity', kind:'Volunteering', org:'Organisation Name', date:'2025', desc:'Describe your role and what you did or learned.', tags:['Teamwork','Communication'] },
+    { title:'Sample Program', kind:'Program', org:'Organisation Name', date:'2024', desc:'Describe the program and your contribution.', tags:['Leadership'] },
+    // add more here...
+  ];
+
+  (function renderExtras(){
+    const grid = document.getElementById('cert-grid');
+    const list = document.getElementById('act-list');
+    const delay = i => ['','d1','d2','d3'][i%4];
+
+    grid.innerHTML = certificates.length ? certificates.map((c,i)=>`
+      <div class="cert-card reveal ${delay(i)}" data-i="${i}">
+        <div class="cert-thumb">${c.thumb ? `<img src="${c.thumb}" alt="${c.title}" loading="lazy">` : (c.icon||'🏅')}</div>
+        <div class="cert-body">
+          <div class="cert-title">${c.title}</div>
+          <div class="cert-issuer">${c.issuer}</div>
+          <div class="cert-meta"><span class="cert-date">${c.date}</span><span class="cert-view">View certificate →</span></div>
+        </div>
+      </div>`).join('') : '<p class="empty-note">// certificates coming soon</p>';
+
+    list.innerHTML = activities.length ? activities.map((a,i)=>`
+      <div class="act-card reveal ${delay(i)}">
+        <div class="act-top">
+          <div class="act-title">${a.title}</div>
+          <div class="act-date">${a.date}</div>
+        </div>
+        <div class="act-org">${a.org}</div>
+        <div class="act-desc">${a.desc}</div>
+        <div class="tags"><span class="tag hot">${a.kind}</span>${(a.tags||[]).map(t=>`<span class="tag">${t}</span>`).join('')}</div>
+      </div>`).join('') : '<p class="empty-note">// activities coming soon</p>';
+
+    // Certificate viewer
+    const modal = document.getElementById('cert-modal');
+    const content = document.getElementById('cert-modal-content');
+    const mTitle = document.getElementById('cert-modal-title');
+    const mOpen = document.getElementById('cert-modal-open');
+
+    function openCert(c){
+      mTitle.textContent = c.title + ' — ' + c.issuer;
+      mOpen.href = c.file;
+      content.innerHTML = c.type === 'pdf'
+        ? `<iframe src="${c.file}" title="${c.title}"></iframe>`
+        : `<img src="${c.file}" alt="${c.title}">`;
+      modal.classList.add('open');
+    }
+    function closeCert(){ modal.classList.remove('open'); content.innerHTML=''; }
+
+    grid.querySelectorAll('.cert-card').forEach(card=>{
+      card.addEventListener('click',()=>openCert(certificates[+card.dataset.i]));
+    });
+    document.getElementById('cert-modal-close').addEventListener('click',closeCert);
+    modal.addEventListener('click',e=>{ if(e.target===modal) closeCert(); });
+    document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeCert(); });
+  })();
+
   // ── Custom Cursor ──
   const dot = document.getElementById('cursor-dot');
   const ring = document.getElementById('cursor-ring');
@@ -1147,7 +1319,7 @@
     ring.style.left=rx+'px'; ring.style.top=ry+'px';
     requestAnimationFrame(loop);
   })();
-  document.querySelectorAll('a,button,.project-card,.skill-card').forEach(el=>{
+  document.querySelectorAll('a,button,.project-card,.skill-card,.cert-card').forEach(el=>{
     el.addEventListener('mouseenter',()=>document.body.classList.add('hovered'));
     el.addEventListener('mouseleave',()=>document.body.classList.remove('hovered'));
   });
@@ -1166,13 +1338,15 @@
   tb.addEventListener('click',()=>{
     const t=document.documentElement.getAttribute('data-theme');
     document.documentElement.setAttribute('data-theme',t==='dark'?'light':'dark');
-    localStorage.setItem('theme',t==='dark'?'light':'dark');
+    try{ localStorage.setItem('theme',t==='dark'?'light':'dark'); }catch(e){}
   });
-  const st=localStorage.getItem('theme');
-  if(st) document.documentElement.setAttribute('data-theme',st);
+  try{
+    const st=localStorage.getItem('theme');
+    if(st) document.documentElement.setAttribute('data-theme',st);
+  }catch(e){}
 
   // ── Typewriter ──
-  const roles=['Software Developer','IT Support','Software Tester','Graduate System Support','IT Graduate'];
+  const roles=['System Testing & QA','Data Analyst','Documentation & Coordination','IT Support & Systems','Tutor','BSc (Hons) IT Graduate'];
   let wi=0,ci=0,del=false;
   const rel=document.getElementById('role-text');
   const crl=document.getElementById('code-role');
@@ -1207,14 +1381,14 @@
 
   // ── Counters ──
   function counter(el,target,suffix,prefix){
-  const dur=1600;const start=performance.now();
-  (function step(t){
-    const p=Math.min((t-start)/dur,1);
-    const e=1-Math.pow(1-p,4);
-    el.textContent=prefix+Math.round(e*target)+suffix;
-    if(p<1)requestAnimationFrame(step);
-  })(performance.now());
-}
+    const dur=1600;const start=performance.now();
+    (function step(t){
+      const p=Math.min((t-start)/dur,1);
+      const e=1-Math.pow(1-p,4);
+      el.textContent=prefix+Math.round(e*target)+suffix;
+      if(p<1)requestAnimationFrame(step);
+    })(performance.now());
+  }
   const cobs=new IntersectionObserver(entries=>{
     entries.forEach(e=>{
       if(e.isIntersecting){
@@ -1230,7 +1404,6 @@
     const url = card.getAttribute('data-repo');
     if(!url) return;
     card.addEventListener('click', function(e){
-      // don't double-fire if the person clicked directly on one of the small icon links
       if(e.target.closest('.proj-link')) return;
       window.open(url, '_blank', 'noopener');
     });
@@ -1241,6 +1414,8 @@
     {ic:'🏠',lbl:'Go to Home',sub:'Back to top',fn:()=>window.scrollTo({top:0,behavior:'smooth'})},
     {ic:'💻',lbl:'View Skills',sub:'See tech stack',fn:()=>document.querySelector('#skills').scrollIntoView({behavior:'smooth'})},
     {ic:'📁',lbl:'View Projects',sub:'See my work',fn:()=>document.querySelector('#projects').scrollIntoView({behavior:'smooth'})},
+    {ic:'🏅',lbl:'View Certificates',sub:'Certificates & achievements',fn:()=>document.querySelector('#certificates').scrollIntoView({behavior:'smooth'})},
+    {ic:'🤝',lbl:'Programs & Volunteering',sub:'Activities',fn:()=>document.querySelector('#activities').scrollIntoView({behavior:'smooth'})},
     {ic:'📋',lbl:'Now & About',sub:'What I\'m up to',fn:()=>document.querySelector('#now').scrollIntoView({behavior:'smooth'})},
     {ic:'✉',lbl:'Contact Me',sub:'Get in touch',fn:()=>document.querySelector('#contact').scrollIntoView({behavior:'smooth'})},
     {ic:'◐',lbl:'Toggle Theme',sub:'Switch dark/light',fn:()=>tb.click()},
@@ -1270,7 +1445,7 @@
   overlay.addEventListener('click',e=>{if(e.target===overlay)closeCmd();});
   inp.addEventListener('input',()=>{sel=0;render(inp.value);});
   document.addEventListener('keydown',e=>{
-    if(e.key==='/'){e.preventDefault();openCmd();}
+    if(e.key==='/' && document.activeElement!==inp){e.preventDefault();openCmd();}
     if(e.key==='Escape')closeCmd();
     if(overlay.classList.contains('open')){
       if(e.key==='ArrowDown'){sel=Math.min(sel+1,filtered.length-1);render(inp.value);}
